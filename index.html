@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Typing Trainer</title>
+  <style>
+    body { display:flex; justify-content:center; align-items:center; height:100vh; background:#111; color:#fff; font-size:5rem; }
+  </style>
+</head>
+<body>
+  <div id="letter"></div>
+  <script>
+    const letters = "abcdefghijklmnopqrstuvwxyz";
+    const letterDiv = document.getElementById("letter");
+
+    function newLetter() {
+      let l = letters[Math.floor(Math.random()*letters.length)];
+      letterDiv.textContent = l;
+      return l;
+    }
+
+    let current = newLetter();
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === current) {
+        current = newLetter();
+      } else {
+        letterDiv.textContent = "❌";
+        setTimeout(() => { current = newLetter(); }, 500);
+      }
+    });
+  </script>
+</body>
+</html>
